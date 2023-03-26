@@ -1,26 +1,24 @@
-import React, {useContext} from 'react';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import MyButton from "../button/MyButton";
-import {AuthContext} from "../../../context";
+import { useDispatch } from "react-redux";
+import { setIsAuth } from "../../../store/authSlice";
 
 const Navbar = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+  const dispatch = useDispatch();
 
-    const logout = () => {
-        setIsAuth(false);
-        localStorage.removeItem('auth')
-    }
+  const logout = () => {
+    dispatch(setIsAuth(false));
+    localStorage.removeItem("auth");
+  };
 
-    return (
-        <div className="navbar">
-            <MyButton onClick={logout}>
-                Выйти
-            </MyButton>
-            <div className="navbar__links">
-                <Link to="/posts">Посты</Link>
-            </div>
-        </div>
-    );
+  return (
+    <div className="navbar">
+      <MyButton onClick={logout}>Выйти</MyButton>
+      <div className="navbar__links">
+        <Link to="/posts">Посты</Link>
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {getPagesArray} from "../../../utils/pages";
+import {getPagesArray} from "../utils/pages";
 
 const Pagination = ({totalPages, page, changePage}) => {
     let pagesArray = getPagesArray(totalPages);
@@ -11,8 +11,8 @@ const Pagination = ({totalPages, page, changePage}) => {
                     key={p}
                     className={page === p ? 'page page__current' : 'page'}
                 >
-                    {p}
-                </span>
+                        {p}
+                    </span>
             )}
         </div>
     );
